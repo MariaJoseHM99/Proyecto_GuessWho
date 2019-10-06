@@ -1,0 +1,370 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Model1StoreContainer">
+    <EntitySet Name="JugadorSet" EntityType="Model1.Store.JugadorSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MensajeSet" EntityType="Model1.Store.MensajeSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PartidaSet" EntityType="Model1.Store.PartidaSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PersonajeSet" EntityType="Model1.Store.PersonajeSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PreguntaSet" EntityType="Model1.Store.PreguntaSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PartidaPersonaje" EntityType="Model1.Store.PartidaPersonaje" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PartidaPregunta" EntityType="Model1.Store.PartidaPregunta" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="JugadorMensaje" Association="Model1.Store.JugadorMensaje">
+      <End Role="Jugador" EntitySet="JugadorSet" />
+      <End Role="Mensaje" EntitySet="MensajeSet" />
+    </AssociationSet>
+    <AssociationSet Name="PartidaJugador" Association="Model1.Store.PartidaJugador">
+      <End Role="Partida" EntitySet="PartidaSet" />
+      <End Role="Jugador" EntitySet="JugadorSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PartidaPersonaje_Partida" Association="Model1.Store.FK_PartidaPersonaje_Partida">
+      <End Role="Partida" EntitySet="PartidaSet" />
+      <End Role="PartidaPersonaje" EntitySet="PartidaPersonaje" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PartidaPersonaje_Personaje" Association="Model1.Store.FK_PartidaPersonaje_Personaje">
+      <End Role="Personaje" EntitySet="PersonajeSet" />
+      <End Role="PartidaPersonaje" EntitySet="PartidaPersonaje" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PartidaPregunta_Partida" Association="Model1.Store.FK_PartidaPregunta_Partida">
+      <End Role="Partida" EntitySet="PartidaSet" />
+      <End Role="PartidaPregunta" EntitySet="PartidaPregunta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PartidaPregunta_Pregunta" Association="Model1.Store.FK_PartidaPregunta_Pregunta">
+      <End Role="Pregunta" EntitySet="PreguntaSet" />
+      <End Role="PartidaPregunta" EntitySet="PartidaPregunta" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="JugadorSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombreUsuario" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="contrasenia" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="correoElectronico" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="puntaje" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Partida_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MensajeSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="mensaje" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Jugador_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PartidaSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="noPartida" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PersonajeSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="audio" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="fotografia" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PreguntaSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="noPregunta" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="pregunta" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PartidaPersonaje">
+    <Key>
+      <PropertyRef Name="Partida_Id" />
+      <PropertyRef Name="Personaje_Id" />
+    </Key>
+    <Property Name="Partida_Id" Type="int" Nullable="false" />
+    <Property Name="Personaje_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PartidaPregunta">
+    <Key>
+      <PropertyRef Name="Partida_Id" />
+      <PropertyRef Name="Pregunta_Id" />
+    </Key>
+    <Property Name="Partida_Id" Type="int" Nullable="false" />
+    <Property Name="Pregunta_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="JugadorMensaje">
+    <End Role="Jugador" Type="Model1.Store.JugadorSet" Multiplicity="1" />
+    <End Role="Mensaje" Type="Model1.Store.MensajeSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Jugador">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Mensaje">
+        <PropertyRef Name="Jugador_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PartidaJugador">
+    <End Role="Partida" Type="Model1.Store.PartidaSet" Multiplicity="1" />
+    <End Role="Jugador" Type="Model1.Store.JugadorSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Partida">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Jugador">
+        <PropertyRef Name="Partida_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PartidaPersonaje_Partida">
+    <End Role="Partida" Type="Model1.Store.PartidaSet" Multiplicity="1" />
+    <End Role="PartidaPersonaje" Type="Model1.Store.PartidaPersonaje" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Partida">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PartidaPersonaje">
+        <PropertyRef Name="Partida_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PartidaPersonaje_Personaje">
+    <End Role="PartidaPersonaje" Type="Model1.Store.PartidaPersonaje" Multiplicity="*" />
+    <End Role="Personaje" Type="Model1.Store.PersonajeSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Personaje">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PartidaPersonaje">
+        <PropertyRef Name="Personaje_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PartidaPregunta_Partida">
+    <End Role="Partida" Type="Model1.Store.PartidaSet" Multiplicity="1" />
+    <End Role="PartidaPregunta" Type="Model1.Store.PartidaPregunta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Partida">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PartidaPregunta">
+        <PropertyRef Name="Partida_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PartidaPregunta_Pregunta">
+    <End Role="PartidaPregunta" Type="Model1.Store.PartidaPregunta" Multiplicity="*" />
+    <End Role="Pregunta" Type="Model1.Store.PreguntaSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Pregunta">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PartidaPregunta">
+        <PropertyRef Name="Pregunta_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="JugadorSet" EntityType="Model1.Jugador" />
+          <EntitySet Name="MensajeSet" EntityType="Model1.Mensaje" />
+          <AssociationSet Name="JugadorMensaje" Association="Model1.JugadorMensaje">
+            <End Role="Jugador" EntitySet="JugadorSet" />
+            <End Role="Mensaje" EntitySet="MensajeSet" />
+          </AssociationSet>
+          <EntitySet Name="PartidaSet" EntityType="Model1.Partida" />
+          <AssociationSet Name="PartidaJugador" Association="Model1.PartidaJugador">
+            <End Role="Partida" EntitySet="PartidaSet" />
+            <End Role="Jugador" EntitySet="JugadorSet" />
+          </AssociationSet>
+          <EntitySet Name="PersonajeSet" EntityType="Model1.Personaje" />
+          <AssociationSet Name="PartidaPersonaje" Association="Model1.PartidaPersonaje">
+            <End Role="Partida" EntitySet="PartidaSet" />
+            <End Role="Personaje" EntitySet="PersonajeSet" />
+          </AssociationSet>
+          <EntitySet Name="PreguntaSet" EntityType="Model1.Pregunta" />
+          <AssociationSet Name="PartidaPregunta" Association="Model1.PartidaPregunta">
+            <End Role="Partida" EntitySet="PartidaSet" />
+            <End Role="Pregunta" EntitySet="PreguntaSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Jugador">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombreUsuario" Type="String" Nullable="false" />
+          <Property Name="contrasenia" Type="String" Nullable="false" />
+          <Property Name="correoElectronico" Type="String" Nullable="false" />
+          <Property Name="puntaje" Type="String" Nullable="false" />
+          <NavigationProperty Name="Mensaje" Relationship="Model1.JugadorMensaje" FromRole="Jugador" ToRole="Mensaje" />
+          <NavigationProperty Name="Partida" Relationship="Model1.PartidaJugador" FromRole="Jugador" ToRole="Partida" />
+        </EntityType>
+        <EntityType Name="Mensaje">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mensaje" Type="String" Nullable="false" />
+          <NavigationProperty Name="Jugador" Relationship="Model1.JugadorMensaje" FromRole="Mensaje" ToRole="Jugador" />
+        </EntityType>
+        <Association Name="JugadorMensaje">
+          <End Type="Model1.Jugador" Role="Jugador" Multiplicity="1" />
+          <End Type="Model1.Mensaje" Role="Mensaje" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Partida">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="noPartida" Type="String" Nullable="false" />
+          <NavigationProperty Name="Jugador" Relationship="Model1.PartidaJugador" FromRole="Partida" ToRole="Jugador" />
+          <NavigationProperty Name="Personaje" Relationship="Model1.PartidaPersonaje" FromRole="Partida" ToRole="Personaje" />
+          <NavigationProperty Name="Pregunta" Relationship="Model1.PartidaPregunta" FromRole="Partida" ToRole="Pregunta" />
+        </EntityType>
+        <Association Name="PartidaJugador">
+          <End Type="Model1.Partida" Role="Partida" Multiplicity="1" />
+          <End Type="Model1.Jugador" Role="Jugador" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Personaje">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="audio" Type="String" Nullable="false" />
+          <Property Name="nombre" Type="String" Nullable="false" />
+          <Property Name="fotografia" Type="String" Nullable="false" />
+          <NavigationProperty Name="Partida" Relationship="Model1.PartidaPersonaje" FromRole="Personaje" ToRole="Partida" />
+        </EntityType>
+        <Association Name="PartidaPersonaje">
+          <End Type="Model1.Partida" Role="Partida" Multiplicity="*" />
+          <End Type="Model1.Personaje" Role="Personaje" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Pregunta">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="noPregunta" Type="String" Nullable="false" />
+          <Property Name="pregunta" Type="String" Nullable="false" />
+          <NavigationProperty Name="Partida" Relationship="Model1.PartidaPregunta" FromRole="Pregunta" ToRole="Partida" />
+        </EntityType>
+        <Association Name="PartidaPregunta">
+          <End Type="Model1.Partida" Role="Partida" Multiplicity="*" />
+          <End Type="Model1.Pregunta" Role="Pregunta" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Model1StoreContainer" CdmEntityContainer="Model1Container">
+    <EntitySetMapping Name="JugadorSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Jugador)">
+        <MappingFragment StoreEntitySet="JugadorSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="nombreUsuario" ColumnName="nombreUsuario" />
+          <ScalarProperty Name="contrasenia" ColumnName="contrasenia" />
+          <ScalarProperty Name="correoElectronico" ColumnName="correoElectronico" />
+          <ScalarProperty Name="puntaje" ColumnName="puntaje" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MensajeSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Mensaje)">
+        <MappingFragment StoreEntitySet="MensajeSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="mensaje" ColumnName="mensaje" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PartidaSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Partida)">
+        <MappingFragment StoreEntitySet="PartidaSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="noPartida" ColumnName="noPartida" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PersonajeSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Personaje)">
+        <MappingFragment StoreEntitySet="PersonajeSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="audio" ColumnName="audio" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="fotografia" ColumnName="fotografia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PreguntaSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Pregunta)">
+        <MappingFragment StoreEntitySet="PreguntaSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="noPregunta" ColumnName="noPregunta" />
+          <ScalarProperty Name="pregunta" ColumnName="pregunta" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="JugadorMensaje" TypeName="Model1.JugadorMensaje" StoreEntitySet="MensajeSet">
+      <EndProperty Name="Jugador">
+        <ScalarProperty Name="Id" ColumnName="Jugador_Id" />
+      </EndProperty>
+      <EndProperty Name="Mensaje">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PartidaJugador" TypeName="Model1.PartidaJugador" StoreEntitySet="JugadorSet">
+      <EndProperty Name="Partida">
+        <ScalarProperty Name="Id" ColumnName="Partida_Id" />
+      </EndProperty>
+      <EndProperty Name="Jugador">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PartidaPersonaje" TypeName="Model1.PartidaPersonaje" StoreEntitySet="PartidaPersonaje">
+      <EndProperty Name="Partida">
+        <ScalarProperty Name="Id" ColumnName="Partida_Id" />
+      </EndProperty>
+      <EndProperty Name="Personaje">
+        <ScalarProperty Name="Id" ColumnName="Personaje_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PartidaPregunta" TypeName="Model1.PartidaPregunta" StoreEntitySet="PartidaPregunta">
+      <EndProperty Name="Partida">
+        <ScalarProperty Name="Id" ColumnName="Partida_Id" />
+      </EndProperty>
+      <EndProperty Name="Pregunta">
+        <ScalarProperty Name="Id" ColumnName="Pregunta_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
