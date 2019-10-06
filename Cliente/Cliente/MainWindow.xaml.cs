@@ -24,5 +24,16 @@ namespace Cliente
         {
             InitializeComponent();
         }
+
+        private void Button_Entrar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_CrearCuenta_Click(object sender, RoutedEventArgs e)
+        {
+            Window1 nuevaVentana = new Window1();
+            nuevaVentana.Show();
+        }
     }
 }
