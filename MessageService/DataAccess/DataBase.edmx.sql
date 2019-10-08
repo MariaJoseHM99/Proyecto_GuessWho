@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/06/2019 16:05:55
--- Generated from EDMX file: C:\Users\Saarayim\Desktop\LISWHO\MessageService\DataAccess\Model1.edmx
+-- Date Created: 10/06/2019 23:54:31
+-- Generated from EDMX file: C:\Users\Bruno\source\repos\MariaJoseHM99\Proyecto_GuessWho\MessageService\DataAccess\DataBase.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -26,25 +26,6 @@ GO
 -- --------------------------------------------------
 -- Creating all tables
 -- --------------------------------------------------
-
--- Creating table 'JugadorSet'
-CREATE TABLE [dbo].[JugadorSet] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [nombreUsuario] nvarchar(max)  NOT NULL,
-    [contrasenia] nvarchar(max)  NOT NULL,
-    [correoElectronico] nvarchar(max)  NOT NULL,
-    [puntaje] nvarchar(max)  NOT NULL,
-    [Partida_Id] int  NOT NULL
-);
-GO
-
--- Creating table 'MensajeSet'
-CREATE TABLE [dbo].[MensajeSet] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [mensaje] nvarchar(max)  NOT NULL,
-    [Jugador_Id] int  NOT NULL
-);
-GO
 
 -- Creating table 'PartidaSet'
 CREATE TABLE [dbo].[PartidaSet] (
@@ -70,6 +51,25 @@ CREATE TABLE [dbo].[PreguntaSet] (
 );
 GO
 
+-- Creating table 'MensajeSet'
+CREATE TABLE [dbo].[MensajeSet] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [mensaje] nvarchar(max)  NOT NULL,
+    [Jugador_Id] int  NOT NULL
+);
+GO
+
+-- Creating table 'JugadorSet'
+CREATE TABLE [dbo].[JugadorSet] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [nombreUsuario] nvarchar(max)  NOT NULL,
+    [contrasenia] nvarchar(max)  NOT NULL,
+    [correoElectronico] nvarchar(max)  NOT NULL,
+    [puntaje] nvarchar(max)  NOT NULL,
+    [Partida_Id] int  NOT NULL
+);
+GO
+
 -- Creating table 'PartidaPersonaje'
 CREATE TABLE [dbo].[PartidaPersonaje] (
     [Partida_Id] int  NOT NULL,
@@ -87,18 +87,6 @@ GO
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
-
--- Creating primary key on [Id] in table 'JugadorSet'
-ALTER TABLE [dbo].[JugadorSet]
-ADD CONSTRAINT [PK_JugadorSet]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
--- Creating primary key on [Id] in table 'MensajeSet'
-ALTER TABLE [dbo].[MensajeSet]
-ADD CONSTRAINT [PK_MensajeSet]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
 
 -- Creating primary key on [Id] in table 'PartidaSet'
 ALTER TABLE [dbo].[PartidaSet]
@@ -118,6 +106,18 @@ ADD CONSTRAINT [PK_PreguntaSet]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
+-- Creating primary key on [Id] in table 'MensajeSet'
+ALTER TABLE [dbo].[MensajeSet]
+ADD CONSTRAINT [PK_MensajeSet]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'JugadorSet'
+ALTER TABLE [dbo].[JugadorSet]
+ADD CONSTRAINT [PK_JugadorSet]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
 -- Creating primary key on [Partida_Id], [Personaje_Id] in table 'PartidaPersonaje'
 ALTER TABLE [dbo].[PartidaPersonaje]
 ADD CONSTRAINT [PK_PartidaPersonaje]
@@ -133,21 +133,6 @@ GO
 -- --------------------------------------------------
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
-
--- Creating foreign key on [Jugador_Id] in table 'MensajeSet'
-ALTER TABLE [dbo].[MensajeSet]
-ADD CONSTRAINT [FK_JugadorMensaje]
-    FOREIGN KEY ([Jugador_Id])
-    REFERENCES [dbo].[JugadorSet]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_JugadorMensaje'
-CREATE INDEX [IX_FK_JugadorMensaje]
-ON [dbo].[MensajeSet]
-    ([Jugador_Id]);
-GO
 
 -- Creating foreign key on [Partida_Id] in table 'JugadorSet'
 ALTER TABLE [dbo].[JugadorSet]
@@ -210,6 +195,21 @@ GO
 CREATE INDEX [IX_FK_PartidaPregunta_Pregunta]
 ON [dbo].[PartidaPregunta]
     ([Pregunta_Id]);
+GO
+
+-- Creating foreign key on [Jugador_Id] in table 'MensajeSet'
+ALTER TABLE [dbo].[MensajeSet]
+ADD CONSTRAINT [FK_JugadorMensaje]
+    FOREIGN KEY ([Jugador_Id])
+    REFERENCES [dbo].[JugadorSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_JugadorMensaje'
+CREATE INDEX [IX_FK_JugadorMensaje]
+ON [dbo].[MensajeSet]
+    ([Jugador_Id]);
 GO
 
 -- --------------------------------------------------

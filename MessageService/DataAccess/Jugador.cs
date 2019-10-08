@@ -26,8 +26,8 @@ namespace DataAccess
         public string correoElectronico { get; set; }
         public string puntaje { get; set; }
     
+        public virtual Partida Partida { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Mensaje> Mensaje { get; set; }
-        public virtual Partida Partida { get; set; }
     }
 }

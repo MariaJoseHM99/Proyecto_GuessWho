@@ -13,10 +13,10 @@ namespace DataAccess
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Model1Container : DbContext
+    public partial class DataBaseContainer : DbContext
     {
-        public Model1Container()
-            : base("name=Model1Container")
+        public DataBaseContainer()
+            : base("name=DataBaseContainer")
         {
         }
     
@@ -25,10 +25,10 @@ namespace DataAccess
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Jugador> JugadorSet { get; set; }
-        public virtual DbSet<Mensaje> MensajeSet { get; set; }
         public virtual DbSet<Partida> PartidaSet { get; set; }
         public virtual DbSet<Personaje> PersonajeSet { get; set; }
         public virtual DbSet<Pregunta> PreguntaSet { get; set; }
+        public virtual DbSet<Mensaje> MensajeSet { get; set; }
+        public virtual DbSet<Jugador> JugadorSet { get; set; }
     }
 }

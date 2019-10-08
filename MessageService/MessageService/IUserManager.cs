@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using DataAccess;
 
 namespace MessageService
 {
@@ -13,6 +14,10 @@ namespace MessageService
     {
         [OperationContract]
         int AddUser(User user);
+
+        [OperationContract]
+        int IniciarSesion(string usuario, string contrasenia);
+
         [OperationContract]
         User GetUserById(String userId);
 
@@ -26,11 +31,15 @@ namespace MessageService
     {
         private string userName;
         private string lastName;
+        private string contrasenia;
 
         [DataMember]
         public String UserName { get { return userName; } set { userName = value; } }
 
         [DataMember]
         public String LastName { get { return lastName; } set { lastName = value; } }
+
+        [DataMember]
+        public String Contrasenia { get { return Contrasenia; } set { Contrasenia = value; } }
     }
 }
