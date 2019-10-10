@@ -12,11 +12,13 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class Mensaje
+    public partial class Character
     {
         public int Id { get; set; }
-        public string mensaje { get; set; }
+        public string characterName { get; set; }
+        public string audio { get; set; }
+        public string photograph { get; set; }
     
-        public virtual Jugador Jugador { get; set; }
+        public virtual Board Board { get; set; }
     }
 }

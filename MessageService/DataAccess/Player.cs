@@ -12,22 +12,21 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class Jugador
+    public partial class Player
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Jugador()
+        public Player()
         {
-            this.Mensaje = new HashSet<Mensaje>();
+            this.Match = new HashSet<Match>();
         }
     
         public int Id { get; set; }
-        public string nombreUsuario { get; set; }
-        public string contrasenia { get; set; }
-        public string correoElectronico { get; set; }
-        public string puntaje { get; set; }
+        public string userName { get; set; }
+        public string password { get; set; }
+        public string email { get; set; }
+        public string score { get; set; }
     
-        public virtual Partida Partida { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Mensaje> Mensaje { get; set; }
+        public virtual ICollection<Match> Match { get; set; }
     }
 }

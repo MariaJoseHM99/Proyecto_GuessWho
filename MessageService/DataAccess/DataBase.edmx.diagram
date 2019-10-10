@@ -4,16 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="be4e96f1a0a74589a72fd5586c019c8b" Name="Diagram1" ZoomLevel="39" >
-        <EntityTypeShape EntityType="DataBase.Partida" Width="1.5" PointX="13.375" PointY="6.25" />
-        <EntityTypeShape EntityType="DataBase.Personaje" Width="1.5" PointX="9.875" PointY="7.25" />
-        <EntityTypeShape EntityType="DataBase.Pregunta" Width="1.5" PointX="12.5" PointY="9.875" />
-        <EntityTypeShape EntityType="DataBase.Mensaje" Width="1.5" PointX="7.25" PointY="10.5" />
-        <EntityTypeShape EntityType="DataBase.Jugador" Width="1.5" PointX="6.75" PointY="6.25" />
-        <AssociationConnector Association="DataBase.PartidaJugador" />
-        <AssociationConnector Association="DataBase.PartidaPersonaje" />
-        <AssociationConnector Association="DataBase.PartidaPregunta" />
-        <AssociationConnector Association="DataBase.JugadorMensaje" />
+      <Diagram DiagramId="f97b6619caf34cbca52d6f1fb1c4c973" Name="Diagram1" >
+        <EntityTypeShape EntityType="DataBase.Player" Width="1.5" PointX="2.375" PointY="0.5" />
+        <EntityTypeShape EntityType="DataBase.Match" Width="1.5" PointX="4.5" PointY="0.625" />
+        <EntityTypeShape EntityType="DataBase.Board" Width="1.5" PointX="6.875" PointY="0.75" />
+        <EntityTypeShape EntityType="DataBase.Character" Width="1.5" PointX="6.875" PointY="3.375" />
+        <EntityTypeShape EntityType="DataBase.Question" Width="1.5" PointX="4.5" PointY="3.375" />
+        <AssociationConnector Association="DataBase.PlayerMatch" />
+        <AssociationConnector Association="DataBase.MatchBoard" />
+        <AssociationConnector Association="DataBase.BoardCharacter" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

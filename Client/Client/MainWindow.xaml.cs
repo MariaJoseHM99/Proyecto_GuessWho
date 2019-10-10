@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Cliente
+namespace Client
 {
     /// <summary>
     /// Lógica de interacción para MainWindow.xaml
@@ -25,14 +25,16 @@ namespace Cliente
             InitializeComponent();
         }
 
-        private void Button_Entrar_Click(object sender, RoutedEventArgs e){
 
+        private void Button_CreateAccount_Click(object sender, RoutedEventArgs e)
+        {
+            CreateAccount newWindow = new CreateAccount();
+            newWindow.Show();
         }
 
-        private void Button_CrearCuenta_Click(object sender, RoutedEventArgs e)
+        private void Button_LogIn_Click(object sender, RoutedEventArgs e)
         {
-            Window1 nuevaVentana = new Window1();
-            nuevaVentana.Show();
+
         }
     }
 }

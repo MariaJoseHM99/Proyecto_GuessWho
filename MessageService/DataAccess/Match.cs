@@ -12,19 +12,19 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class Pregunta
+    public partial class Match
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Pregunta()
+        public Match()
         {
-            this.Partida = new HashSet<Partida>();
+            this.Player = new HashSet<Player>();
         }
     
         public int Id { get; set; }
-        public string noPregunta { get; set; }
-        public string pregunta { get; set; }
+        public string numMatch { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Partida> Partida { get; set; }
+        public virtual ICollection<Player> Player { get; set; }
+        public virtual Board Board { get; set; }
     }
 }

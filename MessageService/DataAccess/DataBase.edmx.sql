@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/06/2019 23:54:31
--- Generated from EDMX file: C:\Users\Bruno\source\repos\MariaJoseHM99\Proyecto_GuessWho\MessageService\DataAccess\DataBase.edmx
+-- Date Created: 10/10/2019 11:18:58
+-- Generated from EDMX file: C:\Users\Saarayim\Desktop\LISWHO\MessageService\DataAccess\DataBase.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [GuessWho];
+USE [LisWho];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -27,60 +27,52 @@ GO
 -- Creating all tables
 -- --------------------------------------------------
 
--- Creating table 'PartidaSet'
-CREATE TABLE [dbo].[PartidaSet] (
+-- Creating table 'PlayerSet'
+CREATE TABLE [dbo].[PlayerSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [noPartida] nvarchar(max)  NOT NULL
+    [userName] nvarchar(max)  NOT NULL,
+    [password] nvarchar(max)  NOT NULL,
+    [email] nvarchar(max)  NOT NULL,
+    [score] nvarchar(max)  NOT NULL
 );
 GO
 
--- Creating table 'PersonajeSet'
-CREATE TABLE [dbo].[PersonajeSet] (
+-- Creating table 'MatchSet'
+CREATE TABLE [dbo].[MatchSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
+    [numMatch] nvarchar(max)  NOT NULL,
+    [Board_Id] int  NOT NULL
+);
+GO
+
+-- Creating table 'BoardSet'
+CREATE TABLE [dbo].[BoardSet] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [boardName] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'CharacterSet'
+CREATE TABLE [dbo].[CharacterSet] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [characterName] nvarchar(max)  NOT NULL,
     [audio] nvarchar(max)  NOT NULL,
-    [nombre] nvarchar(max)  NOT NULL,
-    [fotografia] nvarchar(max)  NOT NULL
+    [photograph] nvarchar(max)  NOT NULL,
+    [Board_Id] int  NOT NULL
 );
 GO
 
--- Creating table 'PreguntaSet'
-CREATE TABLE [dbo].[PreguntaSet] (
+-- Creating table 'QuestionSet'
+CREATE TABLE [dbo].[QuestionSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
-    [noPregunta] nvarchar(max)  NOT NULL,
-    [pregunta] nvarchar(max)  NOT NULL
+    [question] nvarchar(max)  NOT NULL
 );
 GO
 
--- Creating table 'MensajeSet'
-CREATE TABLE [dbo].[MensajeSet] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [mensaje] nvarchar(max)  NOT NULL,
-    [Jugador_Id] int  NOT NULL
-);
-GO
-
--- Creating table 'JugadorSet'
-CREATE TABLE [dbo].[JugadorSet] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [nombreUsuario] nvarchar(max)  NOT NULL,
-    [contrasenia] nvarchar(max)  NOT NULL,
-    [correoElectronico] nvarchar(max)  NOT NULL,
-    [puntaje] nvarchar(max)  NOT NULL,
-    [Partida_Id] int  NOT NULL
-);
-GO
-
--- Creating table 'PartidaPersonaje'
-CREATE TABLE [dbo].[PartidaPersonaje] (
-    [Partida_Id] int  NOT NULL,
-    [Personaje_Id] int  NOT NULL
-);
-GO
-
--- Creating table 'PartidaPregunta'
-CREATE TABLE [dbo].[PartidaPregunta] (
-    [Partida_Id] int  NOT NULL,
-    [Pregunta_Id] int  NOT NULL
+-- Creating table 'PlayerMatch'
+CREATE TABLE [dbo].[PlayerMatch] (
+    [Player_Id] int  NOT NULL,
+    [Match_Id] int  NOT NULL
 );
 GO
 
@@ -88,128 +80,98 @@ GO
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
 
--- Creating primary key on [Id] in table 'PartidaSet'
-ALTER TABLE [dbo].[PartidaSet]
-ADD CONSTRAINT [PK_PartidaSet]
+-- Creating primary key on [Id] in table 'PlayerSet'
+ALTER TABLE [dbo].[PlayerSet]
+ADD CONSTRAINT [PK_PlayerSet]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'PersonajeSet'
-ALTER TABLE [dbo].[PersonajeSet]
-ADD CONSTRAINT [PK_PersonajeSet]
+-- Creating primary key on [Id] in table 'MatchSet'
+ALTER TABLE [dbo].[MatchSet]
+ADD CONSTRAINT [PK_MatchSet]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'PreguntaSet'
-ALTER TABLE [dbo].[PreguntaSet]
-ADD CONSTRAINT [PK_PreguntaSet]
+-- Creating primary key on [Id] in table 'BoardSet'
+ALTER TABLE [dbo].[BoardSet]
+ADD CONSTRAINT [PK_BoardSet]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'MensajeSet'
-ALTER TABLE [dbo].[MensajeSet]
-ADD CONSTRAINT [PK_MensajeSet]
+-- Creating primary key on [Id] in table 'CharacterSet'
+ALTER TABLE [dbo].[CharacterSet]
+ADD CONSTRAINT [PK_CharacterSet]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'JugadorSet'
-ALTER TABLE [dbo].[JugadorSet]
-ADD CONSTRAINT [PK_JugadorSet]
+-- Creating primary key on [Id] in table 'QuestionSet'
+ALTER TABLE [dbo].[QuestionSet]
+ADD CONSTRAINT [PK_QuestionSet]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Partida_Id], [Personaje_Id] in table 'PartidaPersonaje'
-ALTER TABLE [dbo].[PartidaPersonaje]
-ADD CONSTRAINT [PK_PartidaPersonaje]
-    PRIMARY KEY CLUSTERED ([Partida_Id], [Personaje_Id] ASC);
-GO
-
--- Creating primary key on [Partida_Id], [Pregunta_Id] in table 'PartidaPregunta'
-ALTER TABLE [dbo].[PartidaPregunta]
-ADD CONSTRAINT [PK_PartidaPregunta]
-    PRIMARY KEY CLUSTERED ([Partida_Id], [Pregunta_Id] ASC);
+-- Creating primary key on [Player_Id], [Match_Id] in table 'PlayerMatch'
+ALTER TABLE [dbo].[PlayerMatch]
+ADD CONSTRAINT [PK_PlayerMatch]
+    PRIMARY KEY CLUSTERED ([Player_Id], [Match_Id] ASC);
 GO
 
 -- --------------------------------------------------
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
 
--- Creating foreign key on [Partida_Id] in table 'JugadorSet'
-ALTER TABLE [dbo].[JugadorSet]
-ADD CONSTRAINT [FK_PartidaJugador]
-    FOREIGN KEY ([Partida_Id])
-    REFERENCES [dbo].[PartidaSet]
+-- Creating foreign key on [Player_Id] in table 'PlayerMatch'
+ALTER TABLE [dbo].[PlayerMatch]
+ADD CONSTRAINT [FK_PlayerMatch_Player]
+    FOREIGN KEY ([Player_Id])
+    REFERENCES [dbo].[PlayerSet]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating non-clustered index for FOREIGN KEY 'FK_PartidaJugador'
-CREATE INDEX [IX_FK_PartidaJugador]
-ON [dbo].[JugadorSet]
-    ([Partida_Id]);
-GO
-
--- Creating foreign key on [Partida_Id] in table 'PartidaPersonaje'
-ALTER TABLE [dbo].[PartidaPersonaje]
-ADD CONSTRAINT [FK_PartidaPersonaje_Partida]
-    FOREIGN KEY ([Partida_Id])
-    REFERENCES [dbo].[PartidaSet]
+-- Creating foreign key on [Match_Id] in table 'PlayerMatch'
+ALTER TABLE [dbo].[PlayerMatch]
+ADD CONSTRAINT [FK_PlayerMatch_Match]
+    FOREIGN KEY ([Match_Id])
+    REFERENCES [dbo].[MatchSet]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating foreign key on [Personaje_Id] in table 'PartidaPersonaje'
-ALTER TABLE [dbo].[PartidaPersonaje]
-ADD CONSTRAINT [FK_PartidaPersonaje_Personaje]
-    FOREIGN KEY ([Personaje_Id])
-    REFERENCES [dbo].[PersonajeSet]
+-- Creating non-clustered index for FOREIGN KEY 'FK_PlayerMatch_Match'
+CREATE INDEX [IX_FK_PlayerMatch_Match]
+ON [dbo].[PlayerMatch]
+    ([Match_Id]);
+GO
+
+-- Creating foreign key on [Board_Id] in table 'MatchSet'
+ALTER TABLE [dbo].[MatchSet]
+ADD CONSTRAINT [FK_MatchBoard]
+    FOREIGN KEY ([Board_Id])
+    REFERENCES [dbo].[BoardSet]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating non-clustered index for FOREIGN KEY 'FK_PartidaPersonaje_Personaje'
-CREATE INDEX [IX_FK_PartidaPersonaje_Personaje]
-ON [dbo].[PartidaPersonaje]
-    ([Personaje_Id]);
+-- Creating non-clustered index for FOREIGN KEY 'FK_MatchBoard'
+CREATE INDEX [IX_FK_MatchBoard]
+ON [dbo].[MatchSet]
+    ([Board_Id]);
 GO
 
--- Creating foreign key on [Partida_Id] in table 'PartidaPregunta'
-ALTER TABLE [dbo].[PartidaPregunta]
-ADD CONSTRAINT [FK_PartidaPregunta_Partida]
-    FOREIGN KEY ([Partida_Id])
-    REFERENCES [dbo].[PartidaSet]
+-- Creating foreign key on [Board_Id] in table 'CharacterSet'
+ALTER TABLE [dbo].[CharacterSet]
+ADD CONSTRAINT [FK_BoardCharacter]
+    FOREIGN KEY ([Board_Id])
+    REFERENCES [dbo].[BoardSet]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating foreign key on [Pregunta_Id] in table 'PartidaPregunta'
-ALTER TABLE [dbo].[PartidaPregunta]
-ADD CONSTRAINT [FK_PartidaPregunta_Pregunta]
-    FOREIGN KEY ([Pregunta_Id])
-    REFERENCES [dbo].[PreguntaSet]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_PartidaPregunta_Pregunta'
-CREATE INDEX [IX_FK_PartidaPregunta_Pregunta]
-ON [dbo].[PartidaPregunta]
-    ([Pregunta_Id]);
-GO
-
--- Creating foreign key on [Jugador_Id] in table 'MensajeSet'
-ALTER TABLE [dbo].[MensajeSet]
-ADD CONSTRAINT [FK_JugadorMensaje]
-    FOREIGN KEY ([Jugador_Id])
-    REFERENCES [dbo].[JugadorSet]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_JugadorMensaje'
-CREATE INDEX [IX_FK_JugadorMensaje]
-ON [dbo].[MensajeSet]
-    ([Jugador_Id]);
+-- Creating non-clustered index for FOREIGN KEY 'FK_BoardCharacter'
+CREATE INDEX [IX_FK_BoardCharacter]
+ON [dbo].[CharacterSet]
+    ([Board_Id]);
 GO
 
 -- --------------------------------------------------

@@ -1,10 +1,10 @@
-﻿using MessageService;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using MessageService;
 
 namespace Host
 {
@@ -12,7 +12,7 @@ namespace Host
     {
         static void Main(string[] args)
         {
-            using (ServiceHost host = new ServiceHost(typeof(MessageService.MessageService)))
+            using (ServiceHost host = new ServiceHost (typeof(MessageService.PlayerService)))
             {
                 host.Open();
                 Console.WriteLine("Server is running");

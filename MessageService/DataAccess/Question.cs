@@ -12,20 +12,9 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class Personaje
+    public partial class Question
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Personaje()
-        {
-            this.Partida = new HashSet<Partida>();
-        }
-    
         public int Id { get; set; }
-        public string audio { get; set; }
-        public string nombre { get; set; }
-        public string fotografia { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Partida> Partida { get; set; }
+        public string question { get; set; }
     }
 }

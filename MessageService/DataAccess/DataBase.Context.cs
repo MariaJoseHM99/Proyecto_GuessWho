@@ -25,10 +25,10 @@ namespace DataAccess
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Partida> PartidaSet { get; set; }
-        public virtual DbSet<Personaje> PersonajeSet { get; set; }
-        public virtual DbSet<Pregunta> PreguntaSet { get; set; }
-        public virtual DbSet<Mensaje> MensajeSet { get; set; }
-        public virtual DbSet<Jugador> JugadorSet { get; set; }
+        public virtual DbSet<Player> PlayerSet { get; set; }
+        public virtual DbSet<Match> MatchSet { get; set; }
+        public virtual DbSet<Board> BoardSet { get; set; }
+        public virtual DbSet<Character> CharacterSet { get; set; }
+        public virtual DbSet<Question> QuestionSet { get; set; }
     }
 }
