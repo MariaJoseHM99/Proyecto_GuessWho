@@ -11,7 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+//Holaaaaaa
+//    como
+//    estan
 namespace Client {
     /// <summary>
     /// Lógica de interacción para CreateAccount.xaml

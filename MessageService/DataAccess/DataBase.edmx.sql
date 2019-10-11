@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/10/2019 11:18:58
--- Generated from EDMX file: C:\Users\Saarayim\Desktop\LISWHO\MessageService\DataAccess\DataBase.edmx
+-- Date Created: 10/10/2019 16:31:24
+-- Generated from EDMX file: C:\Users\beche\OneDrive\Escritorio\LisWho\MessageService\DataAccess\DataBase.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -17,11 +17,41 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_PlayerMatch_Player]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[PlayerMatch] DROP CONSTRAINT [FK_PlayerMatch_Player];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PlayerMatch_Match]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[PlayerMatch] DROP CONSTRAINT [FK_PlayerMatch_Match];
+GO
+IF OBJECT_ID(N'[dbo].[FK_MatchBoard]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[MatchSet] DROP CONSTRAINT [FK_MatchBoard];
+GO
+IF OBJECT_ID(N'[dbo].[FK_BoardCharacter]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[CharacterSet] DROP CONSTRAINT [FK_BoardCharacter];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[PlayerSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[PlayerSet];
+GO
+IF OBJECT_ID(N'[dbo].[MatchSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[MatchSet];
+GO
+IF OBJECT_ID(N'[dbo].[BoardSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[BoardSet];
+GO
+IF OBJECT_ID(N'[dbo].[CharacterSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[CharacterSet];
+GO
+IF OBJECT_ID(N'[dbo].[QuestionSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[QuestionSet];
+GO
+IF OBJECT_ID(N'[dbo].[PlayerMatch]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[PlayerMatch];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
