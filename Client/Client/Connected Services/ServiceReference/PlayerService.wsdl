@@ -42,10 +42,30 @@
   <wsdl:message name="IPlayerManager_AddPlayer_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddPlayerResponse" />
   </wsdl:message>
+  <wsdl:message name="IPlayerManager_LogIn_InputMessage">
+    <wsdl:part name="parameters" element="tns:LogIn" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerManager_LogIn_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LogInResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerManager_FindPlayer_InputMessage">
+    <wsdl:part name="parameters" element="tns:FindPlayer" />
+  </wsdl:message>
+  <wsdl:message name="IPlayerManager_FindPlayer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FindPlayerResponse" />
+  </wsdl:message>
   <wsdl:portType name="IPlayerManager">
     <wsdl:operation name="AddPlayer">
       <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/AddPlayer" message="tns:IPlayerManager_AddPlayer_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/AddPlayerResponse" message="tns:IPlayerManager_AddPlayer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LogIn">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/LogIn" message="tns:IPlayerManager_LogIn_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/LogInResponse" message="tns:IPlayerManager_LogIn_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FindPlayer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/FindPlayer" message="tns:IPlayerManager_FindPlayer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/FindPlayerResponse" message="tns:IPlayerManager_FindPlayer_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IPlayerManager" type="tns:IPlayerManager">
@@ -60,6 +80,24 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="LogIn">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerManager/LogIn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FindPlayer">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerManager/FindPlayer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="PlayerService">
     <wsdl:port name="NetTcpBinding_IPlayerManager" binding="tns:NetTcpBinding_IPlayerManager">
@@ -67,7 +105,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8091/CalculatorService</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>LAPTOP-G0EJKV7U\Saarayim</Upn>
+          <Upn>BADBRUNNI\Bruno</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

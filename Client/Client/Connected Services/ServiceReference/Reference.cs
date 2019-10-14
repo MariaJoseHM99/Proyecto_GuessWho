@@ -111,10 +111,22 @@ namespace Client.ServiceReference {
     public interface IPlayerManager {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/AddPlayer", ReplyAction="http://tempuri.org/IPlayerManager/AddPlayerResponse")]
-        int AddPlayer(Client.ServiceReference.Player player);
+        void AddPlayer(Client.ServiceReference.Player player);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/AddPlayer", ReplyAction="http://tempuri.org/IPlayerManager/AddPlayerResponse")]
-        System.Threading.Tasks.Task<int> AddPlayerAsync(Client.ServiceReference.Player player);
+        System.Threading.Tasks.Task AddPlayerAsync(Client.ServiceReference.Player player);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/LogIn", ReplyAction="http://tempuri.org/IPlayerManager/LogInResponse")]
+        bool LogIn(string userName, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/LogIn", ReplyAction="http://tempuri.org/IPlayerManager/LogInResponse")]
+        System.Threading.Tasks.Task<bool> LogInAsync(string userName, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/FindPlayer", ReplyAction="http://tempuri.org/IPlayerManager/FindPlayerResponse")]
+        bool FindPlayer(string userName, string email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/FindPlayer", ReplyAction="http://tempuri.org/IPlayerManager/FindPlayerResponse")]
+        System.Threading.Tasks.Task<bool> FindPlayerAsync(string userName, string email);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -144,12 +156,28 @@ namespace Client.ServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public int AddPlayer(Client.ServiceReference.Player player) {
-            return base.Channel.AddPlayer(player);
+        public void AddPlayer(Client.ServiceReference.Player player) {
+            base.Channel.AddPlayer(player);
         }
         
-        public System.Threading.Tasks.Task<int> AddPlayerAsync(Client.ServiceReference.Player player) {
+        public System.Threading.Tasks.Task AddPlayerAsync(Client.ServiceReference.Player player) {
             return base.Channel.AddPlayerAsync(player);
+        }
+        
+        public bool LogIn(string userName, string password) {
+            return base.Channel.LogIn(userName, password);
+        }
+        
+        public System.Threading.Tasks.Task<bool> LogInAsync(string userName, string password) {
+            return base.Channel.LogInAsync(userName, password);
+        }
+        
+        public bool FindPlayer(string userName, string email) {
+            return base.Channel.FindPlayer(userName, email);
+        }
+        
+        public System.Threading.Tasks.Task<bool> FindPlayerAsync(string userName, string email) {
+            return base.Channel.FindPlayerAsync(userName, email);
         }
     }
 }

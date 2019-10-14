@@ -12,18 +12,22 @@ using System.ServiceModel;
 using System.Text;
 using DataAccess;
 
-namespace MessageService
-{
+namespace MessageService {
+
     [ServiceContract]
-    public interface IPlayerManager
-    {
+    public interface IPlayerManager {
         [OperationContract]
-        int AddPlayer(Player player);
+        void AddPlayer(Player player);
+
+        [OperationContract]
+        bool LogIn(String userName, String password);
+
+        [OperationContract]
+        bool FindPlayer(String userName, String email);
     }
 
     [DataContract]
-    public class Player
-    {
+    public class Player {
         private String userName;
         private String password;
         private String email;

@@ -13,27 +13,38 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Client
-{
-    /// <summary>
-    /// Lógica de interacción para MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
-    {
-        public MainWindow()
-        {
+namespace Client {
+
+    public partial class MainWindow : Window {
+
+        public MainWindow() {
             InitializeComponent();
         }
 
-
-        private void Button_CreateAccount_Click(object sender, RoutedEventArgs e)
-        {
-            CreateAccount newWindow = new CreateAccount();
-            newWindow.Show();
+        private void Button_CreateAccount_Click(object sender, RoutedEventArgs e) {
+            CreateAccount newWindowCreateAccount = new CreateAccount();
+            this.Hide();
+            newWindowCreateAccount.Show();
         }
 
-        private void Button_LogIn_Click(object sender, RoutedEventArgs e)
-        {
+        private void Button_LogIn_Click(object sender, RoutedEventArgs e) {
+            ServiceReference.PlayerManagerClient client = new ServiceReference.PlayerManagerClient();
+            if (textBox_UserName.Text != "" && passwordBox_Password.Password != "") {
+                bool Logging = client.LogIn(textBox_UserName.Text, passwordBox_Password.Password);
+                if (Logging == true) {
+                    Lobby lobby = new Lobby();
+                    lobby.Show();
+                    this.Close();
+                } else {
+                    label_Message.Content = "*Usuario y/o contraseña incorrectos";
+                }
+            } else {
+                label_Message.Content = "*Complete los campos de Usuario y/o Contraseña";
+            }
+            client.Close();
+        }
+
+        private void TextBox_UserName_TextChanged(object sender, TextChangedEventArgs e) {
 
         }
     }

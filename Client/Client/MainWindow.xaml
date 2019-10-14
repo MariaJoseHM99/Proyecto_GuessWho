@@ -5,12 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="LISWHO?" Height="450" Width="800" ResizeMode="NoResize">
     <Grid>
-        <TextBox x:Name="textBox_UserName" HorizontalAlignment="Left" Height="43" Margin="56,126,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="404"/>
-        <PasswordBox x:Name="passwordBox_Password" HorizontalAlignment="Left" Margin="71,215,0,0" VerticalAlignment="Top" Height="44" Width="389"/>
-        <Button x:Name="button_LogIn" Content="Entrar" HorizontalAlignment="Left" Margin="150,326,0,0" VerticalAlignment="Top" Width="76" Click="Button_LogIn_Click"/>
-        <Button x:Name="button_CreateAccount" Content="Crear cuenta" HorizontalAlignment="Left" Margin="407,326,0,0" VerticalAlignment="Top" Width="75" Click="Button_CreateAccount_Click"/>
-
+        <Image x:Name="image_BackGround" HorizontalAlignment="Left" Height="421" VerticalAlignment="Top" Width="794" Source="pack://siteoforigin:,,,/Resources/NEONBACKGROUND.jpg" Stretch="UniformToFill">
+            <Image.OpacityMask>
+                <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/NEONBACKGROUND.jpg"/>
+            </Image.OpacityMask>
+        </Image>
+        <TextBox x:Name="textBox_UserName" HorizontalAlignment="Left" Height="30" Margin="200,187,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="404" FontSize="20" TextChanged="TextBox_UserName_TextChanged" FontFamily="HP Simplified Light"/>
+        <PasswordBox x:Name="passwordBox_Password" HorizontalAlignment="Left" Margin="200,263,0,0" VerticalAlignment="Top" Height="30" Width="404" RenderTransformOrigin="0.807,1.247" FontSize="20" FontFamily="HP Simplified Light"/>
+        <Button x:Name="button_LogIn" Content="ENVIAR" HorizontalAlignment="Left" Margin="360,336,0,0" VerticalAlignment="Top" Width="76" Click="Button_LogIn_Click" FontWeight="Bold" Height="20"/>
+        <Button x:Name="button_CreateAccount" Content="CREAR CUENTA" HorizontalAlignment="Left" Margin="352,388,0,0" VerticalAlignment="Top" Width="94" Click="Button_CreateAccount_Click" FontWeight="Bold" Height="20"/>
+        <Label Content="LISWHO?" HorizontalAlignment="Left" Margin="200,10,0,0" VerticalAlignment="Top" FontSize="90" FontFamily="Husky Stash" Height="120" Background="{x:Null}" Width="404" Foreground="White"/>
+        <Label Content="USUARIO" HorizontalAlignment="Left" Margin="200,149,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="20" Height="38" Width="98" Foreground="White"/>
+        <Label Content="CONTRASEÑA" HorizontalAlignment="Left" Margin="200,227,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold" Height="36" Width="144" Foreground="White"/>
+        <Label Content="- O -" HorizontalAlignment="Left" Margin="376,354,0,0" VerticalAlignment="Top" FontSize="15" FontWeight="Bold" Height="30" Width="42" Foreground="White"/>
+        <Label x:Name="label_Message" Content="" HorizontalAlignment="Left" Margin="200,293,0,0" VerticalAlignment="Top" FontSize="15" Foreground="White" FontFamily="HP Simplified" Height="30" Width="404"/>
     </Grid>
 </Window>

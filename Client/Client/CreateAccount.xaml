@@ -5,15 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Client"
         mc:Ignorable="d"
-        Title="CreateAccount" Height="450" Width="800">
+        Title="LISWHO?" Height="450" Width="770" ResizeMode="NoResize">
     <Grid>
-        <TextBox x:Name="textBox_UserName" HorizontalAlignment="Left" Height="38" Margin="56,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="246"/>
-        <TextBox x:Name="textBox_Email" HorizontalAlignment="Left" Height="36" Margin="408,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="246"/>
-        <PasswordBox x:Name="passwordBox_Password" HorizontalAlignment="Left" Margin="56,114,0,0" VerticalAlignment="Top" Width="246" Height="43"/>
-        <TextBox x:Name="textBox_EmailConfirmed" HorizontalAlignment="Left" Height="40" Margin="408,117,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="287"/>
-        <Button x:Name="button_Send" Content="Enviar" HorizontalAlignment="Left" Margin="485,225,0,0" VerticalAlignment="Top" Width="75" Click="Button_Send_Click"/>
-        <Button x:Name="button_Back" Content="Regresar" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Click="Button_Back_Click"/>
-        <PasswordBox x:Name="passwordBox_PasswordConfirmed" HorizontalAlignment="Left" Margin="56,185,0,0" VerticalAlignment="Top" Width="246" Height="40"/>
+        <Image x:Name="image_BackGround" HorizontalAlignment="Left" Height="421" VerticalAlignment="Top" Width="764" Source="pack://siteoforigin:,,,/Resources/NEONBACKGROUND.jpg" Stretch="UniformToFill">
+            <Image.OpacityMask>
+                <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/NEONBACKGROUND.jpg"/>
+            </Image.OpacityMask>
+        </Image>
+
+        <TextBox x:Name="textBox_UserName" HorizontalAlignment="Left" Height="30" Margin="50,101,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" TextChanged="TextBox_UserName_TextChanged" FontSize="20" RenderTransformOrigin="0.506,0.217" FontFamily="HP Simplified Light"/>
+        <PasswordBox x:Name="passwordBox_Password" HorizontalAlignment="Left" Margin="50,174,0,0" VerticalAlignment="Top" Width="246" Height="30" FontSize="20" FontFamily="HP Simplified Light"/>
+        <PasswordBox x:Name="passwordBox_PasswordConfirmed" HorizontalAlignment="Left" Margin="50,247,0,0" VerticalAlignment="Top" Width="246" Height="30" FontSize="20" FontFamily="HP Simplified Light"/>
+        <TextBox x:Name="textBox_Email" HorizontalAlignment="Left" Height="30" Margin="402,101,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" FontSize="20" FontFamily="HP Simplified Light"/>
+        <TextBox x:Name="textBox_EmailConfirmed" HorizontalAlignment="Left" Height="30" Margin="402,174,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" FontSize="20" FontFamily="HP Simplified Light"/>
+        <Button x:Name="button_Send" Content="ENVIAR" HorizontalAlignment="Left" Margin="474,227,0,0" VerticalAlignment="Top" Width="74" Click="Button_Send_Click" FontWeight="Bold"/>
+        <Button x:Name="button_Back" Content="REGRESAR" HorizontalAlignment="Left" Margin="26,20,0,0" VerticalAlignment="Top" Width="75" Click="Button_Back_Click" FontWeight="Bold"/>
+
+        <Label Content="NOMBRE DE USUARIO&#xA;" HorizontalAlignment="Left" Margin="50,63,0,0" VerticalAlignment="Top" Height="38" FontSize="20" FontWeight="Bold" Width="246" Foreground="White"/>
+        <Label Content="CONTRASEÑA" HorizontalAlignment="Left" Margin="50,136,0,0" VerticalAlignment="Top" Height="38" FontSize="20" FontWeight="Bold" Width="246" Foreground="White"/>
+        <Label Content="CONFIRMA CONTRASEÑA" HorizontalAlignment="Left" Margin="50,209,0,0" VerticalAlignment="Top" Height="38" FontSize="20" FontWeight="Bold" Width="347" Foreground="White"/>
+        <Label Content="CORREO ELECTRÓNICO" HorizontalAlignment="Left" Margin="402,63,0,0" VerticalAlignment="Top" Height="38" FontSize="20" FontWeight="Bold" Width="246" Foreground="White"/>
+        <Label Content="CONFIRMA CORREO ELECTRÓNICO" HorizontalAlignment="Left" Margin="402,136,0,0" VerticalAlignment="Top" Height="38" FontSize="20" FontWeight="Bold" Width="350" Foreground="White"/>
+        <Label x:Name="label_Message" Content="" HorizontalAlignment="Left" Margin="50,282,0,0" VerticalAlignment="Top" FontSize="15" Foreground="Red" FontFamily="HP Simplified"/>
+        <Label Content="LISWHO?" HorizontalAlignment="Left" Margin="412,282,0,0" VerticalAlignment="Top" FontSize="50" FontFamily="Husky Stash" Height="81" Background="Transparent" Foreground="White" Width="236"/>
 
     </Grid>
 </Window>
